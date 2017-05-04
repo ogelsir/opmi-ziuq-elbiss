@@ -4,9 +4,9 @@ Tell the reader (someone who does not know anything about this project)
 all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: opmi-ziuq-elbiss
+PURPOSE OF PROJECT: to have some fun?
+VERSION or DATE: 5/3/17
+HOW TO START THIS PROJECT: 
+AUTHORS: Felix Yan, Oliver Jiang
+USER INSTRUCTIONS: good luck
