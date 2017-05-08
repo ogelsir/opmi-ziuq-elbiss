@@ -188,6 +188,7 @@ public class Riddle
     {
         public void run()//timertask class, used to stop scanner if time limit is not met
         {
+            System.out.println("");
             System.out.println("Time's up!");
             try{//pauses code for 1000 milliseconds (1 second)
                     Thread.sleep(1000);
