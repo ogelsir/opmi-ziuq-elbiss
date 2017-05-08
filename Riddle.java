@@ -138,10 +138,10 @@ public class Riddle
             }
         }
         System.out.print('\u000C');//Clears window
-        int index = (int)(Math.random()*riddles.size());
+        int index = (int)(Math.random()*riddles.size());//FIX THIS LINE, MAY ALSO BE A PROBLEM WITH THE ARRAYLISTS
         String answer;
         if(timed){
-            int time = (int)(Math.random()*5)+7;
+            int time = (int)(Math.random()*5)+5;
             //work on timing stuff here
             System.out.println("Seconds to answer: " + time);
             try{//pauses code for 1000 milliseconds (1 second)
@@ -157,20 +157,29 @@ public class Riddle
             }
             System.out.println("Set....");
             try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
-                Thread.sleep((int)(Math.random()*4)*1000);
+                Thread.sleep(((int)(Math.random()*2)+1)*1000);
             }catch(InterruptedException ex){
                 Thread.currentThread().interrupt();
             }
             System.out.println(riddles.get(index));
+            System.out.print("a(n) ");
             timer.schedule(new timeLimit(),time*1000);
             answer = keyboard.next();
             if(!finished){
                 System.out.println("The answer was: " + answers.get(index));
             }else{
                 if(answer.equals(answers.get(index))){
+                    timer.cancel();
                     System.out.println("Correct Answer!");
                 }else{
+                    timer.cancel();
                     System.out.println("Wrong Answer! :(");
+                    try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
+                        Thread.sleep(((int)(Math.random()*2)+1)*1000);
+                    }catch(InterruptedException ex){
+                        Thread.currentThread().interrupt();
+                    }
+                    System.out.println("The answer was: " + answers.get(index));
                 }
             }
         }
@@ -185,7 +194,7 @@ public class Riddle
                 }catch(InterruptedException ex){
                     Thread.currentThread().interrupt();
                 }
-            System.out.println("Type in any key to continue...");
+            System.out.println("Type in any letter to continue...");
             finished = false;
             timer.cancel();
         }
