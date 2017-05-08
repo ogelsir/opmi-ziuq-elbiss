@@ -28,101 +28,106 @@ public class TextArt
             System.out.println("║"                      );
             System.out.println("║"                      );
             System.out.println("╚═════════════");
-        }
-        if(errors == 1){
-            System.out.println("╔═════════════");
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("╚═════════════");
-        }
-        if(errors == 2){
-            System.out.println("╔═════════════");
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║	      ╭ -- ╮"      );
-            System.out.println("║	      | 0 0 |"      );
-            System.out.println("║	      ╰ ∩ ╯"       );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("╚═════════════");
-        }
-        if(errors == 3){
-            System.out.println("╔═════════════");
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║	      ╭ -- ╮"      );
-            System.out.println("║	      | 0 0 |"      );
-            System.out.println("║	      ╰ ∩ ╯"       );
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("╚═════════════");
-        }
-        if(errors == 4){
-            System.out.println("╔═════════════");
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║	      ╭ -- ╮"      );
-            System.out.println("║	      | 0 0 |"      );
-            System.out.println("║	      ╰ ∩ ╯"       );
-            System.out.println("║	    ╲  ║  ╱" 	    );
-            System.out.println("║	      ╲║╱"	    );
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("╚═════════════");
-        }
-        if(errors == 5){
-            System.out.println("╔═════════════");
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║	      ╭ -- ╮"      );
-            System.out.println("║	      | ╳╳ |"      );
-            System.out.println("║	      ╰ ∩ ╯"       );
-            System.out.println("║	    ╲  ║  ╱" 	    );
-            System.out.println("║	      ╲║╱"	    );
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║	        ║"          );
-            System.out.println("║	       ╱ ╲"        );
-            System.out.println("║	     ╱     ╲"      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("║"                      );
-            System.out.println("╚═════════════");
-        }
+        }else{
+            if(errors == 1){
+                System.out.println("╔═════════════");
+                System.out.println("║	        ║"          );
+                System.out.println("║	        ║"          );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("║"                      );
+                System.out.println("╚═════════════");
+            }else{
+                if(errors == 2){
+                    System.out.println("╔═════════════");
+                    System.out.println("║	        ║"          );
+                    System.out.println("║	        ║"          );
+                    System.out.println("║	      ╭ -- ╮"      );
+                    System.out.println("║	      | 0 0 |"      );
+                    System.out.println("║	      ╰ ∩ ╯"       );
+                    System.out.println("║"                      );
+                    System.out.println("║"                      );
+                    System.out.println("║"                      );
+                    System.out.println("║"                      );
+                    System.out.println("║"                      );
+                    System.out.println("║"                      );
+                    System.out.println("║"                      );
+                    System.out.println("║"                      );
+                    System.out.println("║"                      );
+                    System.out.println("║"                      );
+                    System.out.println("╚═════════════");
+                }else{
+                    if(errors == 3){
+                        System.out.println("╔═════════════");
+                        System.out.println("║	        ║"          );
+                        System.out.println("║	        ║"          );
+                        System.out.println("║	      ╭ -- ╮"      );
+                        System.out.println("║	      | 0 0 |"      );
+                        System.out.println("║	      ╰ ∩ ╯"       );
+                        System.out.println("║	        ║"          );
+                        System.out.println("║	        ║"          );
+                        System.out.println("║	        ║"          );
+                        System.out.println("║	        ║"          );
+                        System.out.println("║	        ║"          );
+                        System.out.println("║"                      );
+                        System.out.println("║"                      );
+                        System.out.println("║"                      );
+                        System.out.println("║"                      );
+                        System.out.println("║"                      );
+                        System.out.println("╚═════════════");
+                    }else{
+                        if(errors == 4){
+                            System.out.println("╔═════════════");
+                            System.out.println("║	        ║"          );
+                            System.out.println("║	        ║"          );
+                            System.out.println("║	      ╭ -- ╮"      );
+                            System.out.println("║	      | 0 0 |"      );
+                            System.out.println("║	      ╰ ∩ ╯"       );
+                            System.out.println("║	    ╲  ║  ╱" 	    );
+                            System.out.println("║	      ╲║╱"	    );
+                            System.out.println("║	        ║"          );
+                            System.out.println("║	        ║"          );
+                            System.out.println("║	        ║"          );
+                            System.out.println("║"                      );
+                            System.out.println("║"                      );
+                            System.out.println("║"                      );
+                            System.out.println("║"                      );
+                            System.out.println("║"                      );
+                            System.out.println("╚═════════════");
+                        }else{
+                            if(errors == 5){
+                                System.out.println("╔═════════════");
+                                System.out.println("║	        ║"          );
+                                System.out.println("║	        ║"          );
+                                System.out.println("║	      ╭ -- ╮"      );
+                                System.out.println("║	      | ╳╳ |"      );
+                                System.out.println("║	      ╰ ∩ ╯"       );
+                                System.out.println("║	    ╲  ║  ╱" 	    );
+                                System.out.println("║	      ╲║╱"	    );
+                                System.out.println("║	        ║"          );
+                                System.out.println("║	        ║"          );
+                                System.out.println("║	        ║"          );
+                                System.out.println("║	       ╱ ╲"        );
+                                System.out.println("║	     ╱     ╲"      );
+                                System.out.println("║"                      );
+                                System.out.println("║"                      );
+                                System.out.println("║"                      );
+                                System.out.println("╚═════════════");
+                            }
+                        }
+                    }
+                }
+            }
+        }     
     }
 }
