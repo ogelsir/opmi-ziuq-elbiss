@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=
+comment0.target=TextArt()
+comment1.params=errors
+comment1.target=void\ drawMan(int)
+numComments=2
