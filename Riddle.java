@@ -76,36 +76,22 @@ public class Riddle
         if(timed){
             if(backwards){
                 System.out.println("Timed Mode: On");
+                try{//pauses code for 1000 milliseconds (1 second)
+                    Thread.sleep(1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
                 System.out.println("Backwards Mode: On");
                 try{//pauses code for 1000 milliseconds (1 second)
                     Thread.sleep(1000);
                 }catch(InterruptedException ex){
                     Thread.currentThread().interrupt();
                 }
-                double x = Math.random();//funny message
-                if(x<0.333333333){
-                    System.out.println("FeelsBadMan");
-                    try{//pauses code for 1000 milliseconds (1 second)
-                        Thread.sleep(1000);
-                    }catch(InterruptedException ex){
-                        Thread.currentThread().interrupt();
-                    }
-                }else{
-                    if(x<0.666666666){
-                        System.out.println("Unlucky"); 
-                        try{//pauses code for 1000 milliseconds (1 second)
-                            Thread.sleep(1000);
-                        }catch(InterruptedException ex){
-                            Thread.currentThread().interrupt();
-                        }
-                    }else{
-                        System.out.println("LUL");
-                        try{//pauses code for 1000 milliseconds (1 second)
-                            Thread.sleep(1000);
-                        }catch(InterruptedException ex){
-                            Thread.currentThread().interrupt();
-                        }
-                    }
+                printMeme();
+                try{//pauses code for 1500 milliseconds (1.5 second)
+                    Thread.sleep(1500);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
                 }
             }else{
                 System.out.println("Timed Mode: On");
@@ -130,8 +116,8 @@ public class Riddle
                     Thread.currentThread().interrupt();
                 }
                 System.out.println("!kcul dooG");
-                try{//pauses code for 1000 milliseconds (1 second)
-                    Thread.sleep(1000);
+                try{//pauses code for 1500 milliseconds (1.5 second)
+                    Thread.sleep(1500);
                 }catch(InterruptedException ex){
                     Thread.currentThread().interrupt();
                 }
@@ -141,38 +127,136 @@ public class Riddle
         int index = (int)(Math.random()*riddles.size());//FIX THIS LINE, MAY ALSO BE A PROBLEM WITH THE ARRAYLISTS
         String answer;
         if(timed){
-            int time = (int)(Math.random()*5)+5;
-            //work on timing stuff here
-            System.out.println("Seconds to answer: " + time);
-            try{//pauses code for 1000 milliseconds (1 second)
-                Thread.sleep(1000);
-            }catch(InterruptedException ex){
-                Thread.currentThread().interrupt();
-            }
-            System.out.println("Ready....");
-            try{//pauses code for 1000 milliseconds (1 second)
-                Thread.sleep(1000);
-            }catch(InterruptedException ex){
-                Thread.currentThread().interrupt();
-            }
-            System.out.println("Set....");
-            try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
-                Thread.sleep(((int)(Math.random()*2)+1)*1000);
-            }catch(InterruptedException ex){
-                Thread.currentThread().interrupt();
-            }
-            System.out.println(riddles.get(index));
-            System.out.print("a(n) ");
-            timer.schedule(new timeLimit(),time*1000);
-            answer = keyboard.next();
-            if(!finished){
-                System.out.println("The answer was: " + answers.get(index));
+            if(backwards){
+                int time = (int)(Math.random()*5)+5;
+                System.out.println("Seconds to answer: " + time);
+                try{//pauses code for 1000 milliseconds (1 second)
+                    Thread.sleep(1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println("Ready....");
+                try{//pauses code for 1000 milliseconds (1 second)
+                    Thread.sleep(1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println("Set....");
+                try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
+                    Thread.sleep(((int)(Math.random()*2)+1)*1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println(reverse(riddles.get(index)));
+                System.out.print("a(n) ");
+                timer.schedule(new timeLimit(),time*1000);
+                answer = keyboard.next();
+                if(!finished){
+                    System.out.println("The answer was: " + answers.get(index));
+                }else{
+                    if(answer.equals(answers.get(index))){
+                        timer.cancel();
+                        System.out.println("Correct Answer!");
+                    }else{
+                        timer.cancel();
+                        System.out.println("Wrong Answer! :(");
+                        try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
+                            Thread.sleep(((int)(Math.random()*2)+1)*1000);
+                        }catch(InterruptedException ex){
+                            Thread.currentThread().interrupt();
+                        }
+                        System.out.println("The answer was: " + answers.get(index));
+                    }
+                }
             }else{
+                int time = (int)(Math.random()*5)+5;
+                System.out.println("Seconds to answer: " + time);
+                try{//pauses code for 1000 milliseconds (1 second)
+                    Thread.sleep(1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println("Ready....");
+                try{//pauses code for 1000 milliseconds (1 second)
+                    Thread.sleep(1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println("Set....");
+                try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
+                    Thread.sleep(((int)(Math.random()*2)+1)*1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println(riddles.get(index));
+                System.out.print("a(n) ");
+                timer.schedule(new timeLimit(),time*1000);
+                answer = keyboard.next();
+                if(!finished){
+                    System.out.println("The answer was: " + answers.get(index));
+                }else{
+                    if(answer.equals(answers.get(index))){
+                        timer.cancel();
+                        System.out.println("Correct Answer!");
+                    }else{
+                        timer.cancel();
+                        System.out.println("Wrong Answer! :(");
+                        try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
+                            Thread.sleep(((int)(Math.random()*2)+1)*1000);
+                        }catch(InterruptedException ex){
+                            Thread.currentThread().interrupt();
+                        }
+                        System.out.println("The answer was: " + answers.get(index));
+                    }
+                }
+            }
+        }else{
+            if(backwards){
+                System.out.println("Ready....");
+                try{//pauses code for 1000 milliseconds (1 second)
+                    Thread.sleep(1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println("Set....");
+                try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
+                    Thread.sleep(((int)(Math.random()*2)+1)*1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println(reverse(riddles.get(index)));
+                System.out.print("a(n) ");
+                answer = keyboard.next();
                 if(answer.equals(answers.get(index))){
-                    timer.cancel();
                     System.out.println("Correct Answer!");
                 }else{
-                    timer.cancel();
+                    System.out.println("Wrong Answer! :(");
+                    try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
+                        Thread.sleep(((int)(Math.random()*2)+1)*1000);
+                    }catch(InterruptedException ex){
+                        Thread.currentThread().interrupt();
+                    }
+                    System.out.println("The answer was: " + answers.get(index));
+                }
+            }else{
+                System.out.println("Ready....");
+                try{//pauses code for 1000 milliseconds (1 second)
+                    Thread.sleep(1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println("Set....");
+                try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
+                    Thread.sleep(((int)(Math.random()*2)+1)*1000);
+                }catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println(riddles.get(index));
+                System.out.print("a(n) ");
+                answer = keyboard.next();
+                if(answer.equals(answers.get(index))){
+                    System.out.println("Correct Answer!");
+                }else{
                     System.out.println("Wrong Answer! :(");
                     try{//pauses code for 1000-3000 milliseconds (1-3 second) used to cause tension!
                         Thread.sleep(((int)(Math.random()*2)+1)*1000);
@@ -184,19 +268,37 @@ public class Riddle
             }
         }
     }
+    public String reverse(String x){
+        String result = "";
+        for(int loop = x.length()-2; loop >= 0; loop--){
+            result += x.substring(loop,loop+1);
+        }
+        result += "?";
+        return result;
+    }
+    public void printMeme(){
+        ArrayList <String> memes = new ArrayList <String> ();
+        memes.add("ლ(ಠ益ಠლ)╯");
+        memes.add("(ノಠ益ಠ)ノ彡");
+        memes.add("	ʕノ•ᴥ•ʔノ ︵ ┻━┻");
+        memes.add("FeelsBadMan");
+        memes.add("ヽ(◕∀◕ )ﾉ");
+        int index = (int)(Math.random()*memes.size());
+        System.out.println(memes.get(index));
+    }
     class timeLimit extends TimerTask
     {
         public void run()//timertask class, used to stop scanner if time limit is not met
         {
             System.out.println("");
             System.out.println("Time's up!");
+            finished = false;
             try{//pauses code for 1000 milliseconds (1 second)
                     Thread.sleep(1000);
                 }catch(InterruptedException ex){
                     Thread.currentThread().interrupt();
                 }
             System.out.println("Type in any letter to continue...");
-            finished = false;
             timer.cancel();
         }
     }

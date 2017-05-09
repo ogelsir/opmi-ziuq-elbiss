@@ -9,7 +9,7 @@ public class TempDriver
     }
     public static void Riddle(){
         boolean timed = true;
-        boolean backwards = false;
+        boolean backwards = true;
         Riddle game = new Riddle(timed, backwards);
         game.run();
     }
