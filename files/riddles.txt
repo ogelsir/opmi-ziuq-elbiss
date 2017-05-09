@@ -4,15 +4,13 @@ What belongs to you, but others use it more than you do?
 name
 What flies without wings?
 time
-I start and end with e. I contain only one letter, yet I am not the letter e. What am I?
+I start and end with e, I contain only one letter, yet I am not the letter e. What am I?
 envelope
-I have millions of parts, yet I measure just as well as something with one part. What am I?
-hourglass
 What has a head, a tail, is brown, and has no legs?
 penny
 The more you take, the more you leave behind. What am I?
 footsteps
-What has many keys, but can't even open a single door?
+What has many keys, but can't even open a door?
 piano
 I am full of holes but I can still hold water. What am I?
 sponge
@@ -20,3 +18,19 @@ I am lighter than a feather, yet no man can hold me for long. What am I?
 breath
 Poor people have it. Rich people need it. If you eat it you die. What is it?
 nothing
+I'm tall when I'm young, but I'm short when I'm old. What am I?
+candle
+Feed me and I live, yet give me a drink and I die. What am I?
+fire
+What has four legs but can't walk?
+table
+What gets whiter the dirtier it gets?
+I'm heavy forward, but backward I'm not. What am I?
+ton
+What tastes better than it smells?
+tongue
+I build bridges of silver and crowns of gold. Who am I?
+What fastens two people yet touches only one?
+wedding ring
+What am I?
+question
