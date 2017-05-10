@@ -4,10 +4,10 @@
  * @author Felix Yan
  * @version 5/9/17
  */
-public class Environment2
+public class Grid
 {
     private String[][] grid;
-    public Environment2(int row, int col)
+    public Grid(int row, int col)
     {
         grid = new String[row][col];
     }

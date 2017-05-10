@@ -6,19 +6,19 @@ import java.lang.Math;
  * @author (your name) 
  * @version 5/9/17
  */
-public class Environment2Graphics
+public class Graphics
 {
     private DrawingTool pen;
     private SketchPad paper;
     private String[][] source;
     private int row;
     private int col;
-    public Environment2Graphics(String[][] s)
+    public Graphics(String[][] s)
     {
         source = s;
         row = s.length;
         col = s[0].length;
-        paper = new SketchPad(200+(100*col),200+(100*row),250);
+        paper = new SketchPad(200+(100*col),200+(100*row),0);
         pen = new DrawingTool(paper);
     }
     public void drawGrid()
@@ -69,6 +69,10 @@ public class Environment2Graphics
                 if(source[r][c].equals("tree")){
                     pen.move((-(100*(col/2)))+50+(100*c),((100*((double)row/2))-50)-(100*r));
                     drawTree();
+                }
+                if(source[r][c].equals("player")){
+                    pen.move((-(100*(col/2)))+50+(100*c),((100*((double)row/2))-50)-(100*r));
+                    drawPlayer();
                 } 
             }
         }
@@ -76,7 +80,7 @@ public class Environment2Graphics
     public void drawTree(){//draws a tree with randomly generated colors
         pen.down();
         pen.setColor(new Color(((int)(Math.random()*50))+130,(int)(Math.random()*80),(int)(Math.random()*50)));
-        pen.fillRect(30,70);
+        pen.fillRect((int)(Math.random()*5)+25,70);
         pen.setDirection(90);
         pen.forward(20);
         double x = Math.random()*140;
@@ -106,7 +110,34 @@ public class Environment2Graphics
         pen.down();
         pen.fillOval(30,20);
         pen.up();
+    }
+    public void drawPlayer(){
+        pen.down();
+        pen.setColor(Color.black);
+        pen.setDirection(90);
+        pen.forward(10);
+        pen.up();
+        pen.forward(15);
+        pen.down();
+        pen.drawCircle(15);
+        pen.up();
         pen.setDirection(270);
-        pen.forward(5);
+        pen.forward(15);
+        pen.down();
+        pen.forward(20);
+        pen.setDirection(45);
+        pen.forward(20);
+        pen.backward(20);
+        pen.setDirection(135);
+        pen.forward(20);
+        pen.backward(20);
+        pen.setDirection(270);
+        pen.forward(15);
+        pen.setDirection(225);
+        pen.forward(20);
+        pen.backward(20);
+        pen.setDirection(315);
+        pen.forward(20);
+        pen.up();
     }
 }
