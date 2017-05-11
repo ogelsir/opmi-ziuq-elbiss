@@ -14,12 +14,11 @@ public class Input extends JFrame implements KeyListener
     public Input()
     {
         //input window
-        super("Keyboard Input");
-        setSize(300,300);
+        super("Click Here!");
+        setSize(200,200);
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-               
         addKeyListener(this);
         //Game Stuff
         inventory = new ArrayList <String> ();
