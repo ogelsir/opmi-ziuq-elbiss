@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Font;
 import java.awt.Dimension;
+import java.io.PrintStream;
 /**
  * @author Felix Yan 
  * @version 5/10/17
@@ -30,11 +31,17 @@ public class Menu extends JFrame
         grid.set("tree3",2,2);
         g.drawGrid();
         //window stuff
-        JTextArea instructions = new JTextArea(helpText);
-        instructions.setFont(new Font("Segoe UI",0,15));
-        instructions.setEditable(false);
+        //JTextArea instructions = new JTextArea(helpText);
+        //instructions.setFont(new Font("Segoe UI",0,15));
+        //instructions.setEditable(false);
         add(new Keyboard(grid, g));//ask sos about layering jcomponents? bug?
-        add(instructions);
+        //console output
+        JTextArea textOutput = new JTextArea();
+        textOutput.setEditable(false);
+        PrintStream out = new PrintStream(new Console(textOutput));
+        System.setOut(out);
+        System.setErr(out);
+        add(textOutput);
         pack();
         setVisible(true);
     }

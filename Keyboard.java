@@ -42,28 +42,32 @@ public class Keyboard extends JPanel
         q2.put("Q", new qAction());
         e2.put("E", new eAction());
         esc2.put("ESC", new escAction());
-        this.setPreferredSize(new Dimension(30,30));
+        //this.setPreferredSize(new Dimension(300,300));
     }
     class wAction extends AbstractAction{
         public void actionPerformed(ActionEvent e){
+            System.out.println("moved up!");
             grid.up();
             g.drawGrid();
         }
     }
     class aAction extends AbstractAction{
         public void actionPerformed(ActionEvent e){
+            System.out.println("moved left!");
             grid.left();
             g.drawGrid();
         }
     }
     class sAction extends AbstractAction{
         public void actionPerformed(ActionEvent e){
+            System.out.println("moved down!");
             grid.down();
             g.drawGrid();
         }
     }
     class dAction extends AbstractAction{
         public void actionPerformed(ActionEvent e){
+            System.out.println("moved right!");
             grid.right();
             g.drawGrid();
         }
