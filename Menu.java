@@ -12,7 +12,7 @@ public class Menu extends JFrame
     private Grid grid;
     private Graphics g;
     private ArrayList <String> inventory;
-    private String helpText = "Instructions:\n" + "W,A,S,D to move\n" + "E to interact when available\n" + "Q to open inventory";
+    private String helpText = "Instructions:\n" + "W,A,S,D to move\n" + "E to interact when available\n" + "Q to open inventory\n" + "ESC to quit game";
     public Menu()
     {
         // window
