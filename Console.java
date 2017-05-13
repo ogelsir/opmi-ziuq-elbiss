@@ -4,6 +4,7 @@ import javax.swing.*;
 /**
  * @author Felix Yan
  * @version 5/12/17
+ * @source code: http://stackoverflow.com/questions/19834155/jtextarea-as-console
  */
 public class Console extends OutputStream
 {
