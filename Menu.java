@@ -26,22 +26,26 @@ public class Menu extends JFrame
         content.setLayout(new BoxLayout(content,BoxLayout.Y_AXIS));
         //Game Stuff
         inventory = new ArrayList <String> ();
-        grid = new Grid(5,4);
+        grid = new Grid(6,7);
         g = new Graphics(grid.getGrid());
-        grid.set("player",4,0);
-        grid.set("tree",1,1);
-        grid.set("tree2",2,1);
-        grid.set("tree3",2,2);
+        grid.set("player",5,0);
+        //mountains
+        grid.set("mountain",2,0);
+        grid.set("mountain2",2,1);
+        grid.set("mountain3",2,2);
+        grid.set("mountain",3,0);
+        grid.set("mountain2",3,1);
+        //trees
+        grid.set("tree",1,0);
+        grid.set("tree2",1,1);
+        grid.set("tree3",2,3);
+        grid.set("tree",3,2);
         g.drawGrid();
         
         //inventory
         inventory = new ArrayList <String> ();
         inventory.add("Chest");
-        
-        //keyboard input
-        Movement m = new Movement(grid,g,inventory);
-        add(m);
-        
+             
         //console output
         JTextArea textOutput = new JTextArea(15,40);
         textOutput.setEditable(false);
@@ -51,11 +55,14 @@ public class Menu extends JFrame
         System.setErr(out);
         System.out.println(help1 + help2);
         textOutput.setCaretPosition(textOutput.getDocument().getLength());
-        JScrollPane scroll = new JScrollPane(textOutput);
+        final JScrollPane scroll = new JScrollPane(textOutput);
         add(scroll);
+        //keyboard input
+        final Movement m = new Movement(grid,g,inventory);
+        add(m);
         
         //textfield for input
-        JTextField input = new JTextField("Movement disabled when typing here.");
+        final JTextField input = new JTextField("Movement disabled when typing here.");
         input.addFocusListener(new Focus(m));
         input.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
