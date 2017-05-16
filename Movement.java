@@ -114,12 +114,15 @@ public class Movement extends JPanel
                 for(int loop = 0; loop < inventory.size(); loop++){
                     System.out.println(inventory.get(loop));
                 }
+                System.out.println("");
             }
         }
     }
     class eAction extends AbstractAction{
         public void actionPerformed(ActionEvent e){
-            //add interaction method
+            if(grid.interactable()){
+                grid.interact();
+            }
         }
     }
     class escAction extends AbstractAction{

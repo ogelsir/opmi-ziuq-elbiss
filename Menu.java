@@ -7,12 +7,12 @@ import java.io.PrintStream;
  * @author Felix Yan 
  * @version 5/10/17
  */
-public class Menu extends JFrame 
+public class Menu extends JFrame
 {
     private Grid grid;
     private Graphics g;
-    private String help1 = "How to play:\n" + "W, A, S, D to move\n" + "E to interact when available\n";
-    private String help2 = "Q to open inventory\n" + "ESC to quit game\n";
+    private String help1 = "How to play:\n" + "W, A, S, D to move\n" + "E to interact nearby (indicated by red exclamation)\n";
+    private String help2 = "Q to print inventory\n" + "ESC to quit game\n";
     private ArrayList <String> inventory;
 
     public Menu()
@@ -24,9 +24,13 @@ public class Menu extends JFrame
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container content = getContentPane();
         content.setLayout(new BoxLayout(content,BoxLayout.Y_AXIS));
-        //Game Stuff
+        
+        //inventory
         inventory = new ArrayList <String> ();
-        grid = new Grid(6,7);
+        inventory.add("Old Key");
+        
+        //Game initialization
+        grid = new Grid(6,7,inventory);
         g = new Graphics(grid.getGrid(),grid);
         grid.set("player",5,0);
         //mountains
@@ -37,14 +41,19 @@ public class Menu extends JFrame
         grid.set("mountain1",3,1);
         //trees
         grid.set("tree1",1,0);
-        grid.set("tree2interactable",1,1);
+        grid.set("tree2",1,1);
         grid.set("tree3",2,3);
         grid.set("tree1",3,2);
+        
+        //chest
+        grid.set("chestinteractable",3,3);
+        
+        
+        //draw grid for first time
         g.drawGrid();
         
-        //inventory
-        inventory = new ArrayList <String> ();
-        inventory.add("Chest");
+        
+        
              
         //console output
         JTextArea textOutput = new JTextArea(15,40);

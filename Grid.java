@@ -1,18 +1,22 @@
-
+import java.util.ArrayList;
 /**
- *  
  * @author Felix Yan
  * @version 5/9/17
  */
 public class Grid
 {
     private String[][] grid;
-    int pRow;//player row position
-    int pCol;//player col position
-    public Grid(int row, int col)
+    private ArrayList <String> inventory;
+    private int pRow;//player row position
+    private int pCol;//player col position
+    private int iRow;//interactable row
+    private int iCol;//interactable col
+    public Grid(int row, int col,ArrayList <String> i)
     {
         grid = new String[row][col];
+        inventory = i;
     }
+    
     public void set(String x, int row, int col)
     {
         grid[row][col] = x;
@@ -47,28 +51,58 @@ public class Grid
         }
     }
     
+    public void setInteractable(int row, int col){
+        iRow = row;
+        iCol = col;
+    }
+    
     public boolean interactable(){
         if(pRow > 0){//above
             if(grid[pRow-1][pCol] != null && grid[pRow-1][pCol].indexOf("interact") != -1){
+                setInteractable(pRow-1,pCol);
                 return true;
             }
         }
         if(pRow < grid.length-1){//below
             if(grid[pRow+1][pCol] != null && grid[pRow+1][pCol].indexOf("interact") != -1){
+                setInteractable(pRow+1,pCol);
                 return true;
             }
         }
         if(pCol > 0){//left
             if(grid[pRow][pCol-1] != null && grid[pRow][pCol-1].indexOf("interact") != -1){
+                setInteractable(pRow,pCol-1);
                 return true;
             }
         }
         if(pCol < grid[0].length-1){//right
             if(grid[pRow][pCol+1] != null && grid[pRow][pCol+1].indexOf("interact") != -1){
+                setInteractable(pRow,pCol+1);
                 return true;
             }
         }
         return false;
+    }
+    public void interact(){
+        if(grid[iRow][iCol].indexOf("chest") != -1){
+            boolean keyObtained = false;
+            for(int loop = 0; loop < inventory.size(); loop++){
+                if(inventory.get(loop).equals("Old Key")){
+                    inventory.remove(loop);
+                    keyObtained = true;
+                }
+            }
+            if(keyObtained){
+                inventory.add("Old Relic");
+                System.out.println("Chest Unlocked!");
+                System.out.println("You obtained: Old Relic");
+                System.out.println("You examine the Old Relic, it appears to fit into something...");
+                System.out.println("");
+            }else{
+                System.out.println("The Chest is locked! It looks like you need a key...");
+                System.out.println("");
+            }
+        }
     }
     public String[][] getGrid(){
         return grid;
