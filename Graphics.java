@@ -11,6 +11,7 @@ public class Graphics
     private DrawingTool pen;
     private SketchPad paper;
     private String[][] source;
+    private Grid grid;
     private int row;
     private int col;
     //colors
@@ -58,9 +59,10 @@ public class Graphics
     private final int m3a = (int)((Math.random()*128)+96);
     private final int m3b = (int)((Math.random()*128)+96);
     private final int m3c = (int)((Math.random()*128)+96);
-    public Graphics(String[][] s)
+    public Graphics(String[][] s,Grid g)
     {
         source = s;
+        grid = g;
         row = s.length;
         col = s[0].length;
         paper = new SketchPad(200+(100*col),200+(100*row),0);
@@ -113,31 +115,38 @@ public class Graphics
                 if(source[r][c]==null){
                     continue;
                 }
-                if(source[r][c].equals("tree")){
-                    pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
-                    drawTree();
-                }
-                if(source[r][c].equals("tree2")){
-                    pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
-                    drawTree2();
-                }
-                if(source[r][c].equals("tree3")){
-                    pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
-                    drawTree3();
-                }
                 if(source[r][c].equals("player")){
                     pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
                     drawPlayer();
+                    if(grid.interactable()){
+                        pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
+                        drawInteract();
+                    } 
                 } 
-                if(source[r][c].equals("mountain")){
+                
+                //trees
+                if(source[r][c].indexOf("tree1") != -1){
+                    pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
+                    drawTree();
+                }
+                if(source[r][c].indexOf("tree2") != -1){
+                    pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
+                    drawTree2();
+                }
+                if(source[r][c].indexOf("tree3") != -1){
+                    pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
+                    drawTree3();
+                }
+                //mountains
+                if(source[r][c].indexOf("mountain1") != -1){
                     pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
                     drawMountain();
                 }
-                if(source[r][c].equals("mountain2")){
+                if(source[r][c].indexOf("mountain2") != -1){
                     pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
                     drawMountain2();
                 }
-                if(source[r][c].equals("mountain3")){
+                if(source[r][c].indexOf("mountain3") != -1){
                     pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
                     drawMountain3();
                 }
@@ -462,6 +471,22 @@ public class Graphics
         pen.backward(20);
         pen.setDirection(315);
         pen.forward(20);
+        pen.up();
+    }
+    public void drawInteract(){
+        pen.up();
+        pen.setDirection(90);
+        pen.forward(20);
+        pen.setDirection(0);
+        pen.forward(25);
+        pen.setColor(Color.red);
+        pen.down();
+        pen.fillCircle(2);
+        pen.up();
+        pen.setDirection(90);
+        pen.forward(5);
+        pen.down();
+        pen.forward(13);
         pen.up();
     }
 }

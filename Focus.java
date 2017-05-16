@@ -17,4 +17,10 @@ public class Focus extends FocusAdapter
             m.disable();
         }
     }
+    public void focusLost(FocusEvent e){
+        {
+            ((JTextField)e.getSource()).setText("Movement disabled when typing here.");
+            m.enable();
+        }
+    }
 }

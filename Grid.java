@@ -21,9 +21,6 @@ public class Grid
             pCol=col;
         }
     }
-    public void erase(int row, int col){
-        grid[row][col] = null;
-    }
     
     public void up(){
         if(pRow > 0 && grid[pRow-1][pCol] == null){
@@ -50,6 +47,29 @@ public class Grid
         }
     }
     
+    public boolean interactable(){
+        if(pRow > 0){//above
+            if(grid[pRow-1][pCol] != null && grid[pRow-1][pCol].indexOf("interact") != -1){
+                return true;
+            }
+        }
+        if(pRow < grid.length-1){//below
+            if(grid[pRow+1][pCol] != null && grid[pRow+1][pCol].indexOf("interact") != -1){
+                return true;
+            }
+        }
+        if(pCol > 0){//left
+            if(grid[pRow][pCol-1] != null && grid[pRow][pCol-1].indexOf("interact") != -1){
+                return true;
+            }
+        }
+        if(pCol < grid[0].length-1){//right
+            if(grid[pRow][pCol+1] != null && grid[pRow][pCol+1].indexOf("interact") != -1){
+                return true;
+            }
+        }
+        return false;
+    }
     public String[][] getGrid(){
         return grid;
     }

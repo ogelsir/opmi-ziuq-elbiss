@@ -27,19 +27,19 @@ public class Menu extends JFrame
         //Game Stuff
         inventory = new ArrayList <String> ();
         grid = new Grid(6,7);
-        g = new Graphics(grid.getGrid());
+        g = new Graphics(grid.getGrid(),grid);
         grid.set("player",5,0);
         //mountains
-        grid.set("mountain",2,0);
+        grid.set("mountain1",2,0);
         grid.set("mountain2",2,1);
         grid.set("mountain3",2,2);
-        grid.set("mountain",3,0);
-        grid.set("mountain2",3,1);
+        grid.set("mountain3",3,0);
+        grid.set("mountain1",3,1);
         //trees
-        grid.set("tree",1,0);
-        grid.set("tree2",1,1);
+        grid.set("tree1",1,0);
+        grid.set("tree2interactable",1,1);
         grid.set("tree3",2,3);
-        grid.set("tree",3,2);
+        grid.set("tree1",3,2);
         g.drawGrid();
         
         //inventory
@@ -76,6 +76,7 @@ public class Menu extends JFrame
         add(input);
         
         //final touches
+        this.setLocation(950,200);
         pack();
         setVisible(true);
     }
