@@ -27,26 +27,28 @@ public class Menu extends JFrame
         
         //inventory
         inventory = new ArrayList <String> ();
-        inventory.add("Old Key");
         
         //Game initialization
         grid = new Grid(6,7,inventory);
         g = new Graphics(grid.getGrid(),grid);
         grid.set("player",5,0);
         //mountains
-        grid.set("mountain1",2,0);
-        grid.set("mountain2",2,1);
-        grid.set("mountain3",2,2);
-        grid.set("mountain3",3,0);
+        grid.set("mountain1",1,0);
+        grid.set("mountain2",2,0);
+        grid.set("mountain3",2,1);
+        grid.set("mountain2",2,2);
         grid.set("mountain1",3,1);
-        //trees
-        grid.set("tree1",1,0);
-        grid.set("tree2",1,1);
+        //trees around mountains
+        grid.set("tree1",1,1);
+        grid.set("tree2",1,2);
         grid.set("tree3",2,3);
-        grid.set("tree1",3,2);
+        grid.set("tree2",3,2);
+        //trees near bottom + hidden key
+        grid.set("tree1special",5,3);
+        grid.set("tree3",5,4);
         
         //chest
-        grid.set("chestinteractable",3,3);
+        grid.set("chestinteractable",3,0);
         
         
         //draw grid for first time
