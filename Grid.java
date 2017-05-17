@@ -83,6 +83,33 @@ public class Grid
         }
         return false;
     }
+    public boolean specialCase(){
+        if(pRow > 0){//above
+            if(grid[pRow-1][pCol] != null && grid[pRow-1][pCol].indexOf("special") != -1){
+                setInteractable(pRow-1,pCol);
+                return true;
+            }
+        }
+        if(pRow < grid.length-1){//below
+            if(grid[pRow+1][pCol] != null && grid[pRow+1][pCol].indexOf("special") != -1){
+                setInteractable(pRow+1,pCol);
+                return true;
+            }
+        }
+        if(pCol > 0){//left
+            if(grid[pRow][pCol-1] != null && grid[pRow][pCol-1].indexOf("special") != -1){
+                setInteractable(pRow,pCol-1);
+                return true;
+            }
+        }
+        if(pCol < grid[0].length-1){//right
+            if(grid[pRow][pCol+1] != null && grid[pRow][pCol+1].indexOf("special") != -1){
+                setInteractable(pRow,pCol+1);
+                return true;
+            }
+        }
+        return false;
+    }
     public void interact(){
         if(grid[iRow][iCol].indexOf("chest") != -1){
             boolean keyObtained = false;
@@ -102,6 +129,13 @@ public class Grid
                 System.out.println("The Chest is locked! It looks like you need a key...");
                 System.out.println("");
             }
+        }
+        if(grid[iRow][iCol].indexOf("tree1") != -1){
+            inventory.add("Old Key");
+            System.out.println("You rustle around the bushes and find an Old Key buried in the dirt.");
+            System.out.println("You obtained: Old Key");
+            System.out.println("You examine the Old Key, it appears to fit into a keyhole...");
+            System.out.println("");
         }
     }
     public String[][] getGrid(){

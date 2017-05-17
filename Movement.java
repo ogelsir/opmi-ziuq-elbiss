@@ -109,6 +109,7 @@ public class Movement extends JPanel
         public void actionPerformed(ActionEvent e){
             if(inventory.size()==0){
                 System.out.println("Inventory Empty!");
+                System.out.println("");
             }else{
                 System.out.println("Inventory:");
                 for(int loop = 0; loop < inventory.size(); loop++){
@@ -121,6 +122,9 @@ public class Movement extends JPanel
     class eAction extends AbstractAction{
         public void actionPerformed(ActionEvent e){
             if(grid.interactable()){
+                grid.interact();
+            }
+            if(grid.specialCase()){
                 grid.interact();
             }
         }
