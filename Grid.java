@@ -135,7 +135,6 @@ public class Grid
                     System.out.println("");
                 }
             }
-            
         }
         if(grid[iRow][iCol].indexOf("tree1") != -1){
             inventory.add("Old Key");

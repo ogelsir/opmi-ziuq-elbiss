@@ -153,7 +153,11 @@ public class Graphics
                 //chest
                 if(source[r][c].indexOf("chest") != -1){
                     pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
-                    drawChest();
+                    if(source[r][c].indexOf("opened") != -1){
+                        drawOpenedChest();
+                    }else{
+                        drawChest();
+                    }
                 }
             }
         }
@@ -544,6 +548,101 @@ public class Graphics
         pen.setDirection(90);
         pen.forward(5);
         pen.fillCircle(3);
+        pen.up();
+    }
+    public void drawOpenedChest(){
+        pen.up();
+        double x = pen.getXPos();
+        double y = pen.getYPos();
+        pen.setDirection(270);
+        pen.forward(10);
+        pen.down();
+        //fill
+        pen.setColor(new Color(204,102,0));
+        pen.fillRect(60,40);
+        //border
+        pen.setColor(Color.black);
+        pen.drawRect(60,40);
+        pen.setColor(Color.yellow);
+        int width = 58;
+        int height = 38;
+        for(int loop = 0; loop <= 4; loop++){
+            pen.drawRect(width,height);
+            width--;
+            height--;
+        }
+        pen.up();
+        pen.setColor(Color.black);
+        pen.setDirection(180);
+        pen.forward(26);
+        pen.setDirection(90);
+        pen.forward(20);
+        pen.setDirection(0);
+        for(int loop = 0; loop <= 3; loop++){
+            pen.forward(50);
+            pen.up();
+            pen.backward(50);
+            pen.setDirection(270);
+            pen.forward(10);
+            pen.setDirection(0);
+            pen.down();
+        }
+        pen.up();
+        //top half
+        pen.move(x,y);
+        pen.setDirection(90);
+        pen.forward(25);
+        pen.down();
+        pen.setColor(new Color(204,102,0));
+        pen.fillRect(45,30);
+        pen.setColor(Color.black);
+        pen.drawRect(45,30);
+        width = 43;
+        height = 28;
+        pen.setColor(Color.yellow);
+        for(int loop = 0; loop <= 2; loop++){
+            pen.drawRect(width,height);
+            width--;
+            height--;
+        }
+        //vertical lines
+        pen.up();
+        pen.setColor(Color.black);
+        pen.setDirection(180);
+        pen.forward(14);
+        pen.setDirection(90);
+        pen.forward(12);
+        pen.down();
+        pen.setDirection(270);
+        pen.forward(24);
+        pen.up();
+        pen.backward(24);
+        pen.setDirection(0);
+        pen.forward(14);
+        pen.down();
+        pen.setDirection(270);
+        pen.forward(24);
+        pen.up();
+        pen.backward(24);
+        pen.setDirection(0);
+        pen.forward(14);
+        pen.setDirection(270);
+        pen.down();
+        pen.forward(24);
+        pen.up();
+        pen.backward(24);
+        pen.setDirection(180);
+        pen.forward(14);
+        pen.setDirection(90);
+        pen.forward(6);
+        pen.down();
+        pen.setColor(Color.yellow);
+        pen.fillRect(18,6);
+        pen.setColor(Color.black);
+        pen.drawRect(18,6);
+        pen.setDirection(270);
+        pen.forward(1);
+        pen.fillRect(5,3);
         pen.up();
     }
     public void drawPlayer(){

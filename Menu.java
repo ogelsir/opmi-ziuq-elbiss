@@ -50,13 +50,9 @@ public class Menu extends JFrame
         //chest
         grid.set("chestinteractable",3,0);
         
-        
         //draw grid for first time
         g.drawGrid();
-        
-        
-        
-             
+
         //console output
         JTextArea textOutput = new JTextArea(15,40);
         textOutput.setEditable(false);
@@ -65,7 +61,6 @@ public class Menu extends JFrame
         System.setOut(out);
         System.setErr(out);
         System.out.println(help1 + help2);
-        textOutput.setCaretPosition(textOutput.getDocument().getLength());
         final JScrollPane scroll = new JScrollPane(textOutput);
         add(scroll);
         //keyboard input

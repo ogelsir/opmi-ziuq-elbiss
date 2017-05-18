@@ -14,5 +14,6 @@ public class Console extends OutputStream
     public void write(int b) throws IOException
     {
         output.append(String.valueOf((char)b));
+        output.setCaretPosition(output.getDocument().getLength());
     }
 }
