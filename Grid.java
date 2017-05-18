@@ -112,26 +112,34 @@ public class Grid
     }
     public void interact(){
         if(grid[iRow][iCol].indexOf("chest") != -1){
-            boolean keyObtained = false;
-            for(int loop = 0; loop < inventory.size(); loop++){
-                if(inventory.get(loop).equals("Old Key")){
-                    inventory.remove(loop);
-                    keyObtained = true;
-                }
-            }
-            if(keyObtained){
-                inventory.add("Old Relic");
-                System.out.println("Chest Unlocked!");
-                System.out.println("You obtained: Old Relic");
-                System.out.println("You examine the Old Relic, it appears to fit into something...");
+            if(grid[iRow][iCol].indexOf("opened") != -1){
+                System.out.println("Chest Empty!");
                 System.out.println("");
             }else{
-                System.out.println("The Chest is locked! It looks like you need a key...");
-                System.out.println("");
+                boolean keyObtained = false;
+                for(int loop = 0; loop < inventory.size(); loop++){
+                    if(inventory.get(loop).equals("Old Key")){
+                        inventory.remove(loop);
+                        keyObtained = true;
+                    }
+                }
+                if(keyObtained){
+                    inventory.add("Old Relic");
+                    grid[iRow][iCol] = "chestinteractableopened";
+                    System.out.println("Chest Unlocked!");
+                    System.out.println("You obtained: Old Relic");
+                    System.out.println("You examine the Old Relic, it appears to fit into something...");
+                    System.out.println("");
+                }else{
+                    System.out.println("The Chest is locked! It looks like you need a key...");
+                    System.out.println("");
+                }
             }
+            
         }
         if(grid[iRow][iCol].indexOf("tree1") != -1){
             inventory.add("Old Key");
+            grid[iRow][iCol] = "tree1";
             System.out.println("You rustle around the bushes and find an Old Key buried in the dirt.");
             System.out.println("You obtained: Old Key");
             System.out.println("You examine the Old Key, it appears to fit into a keyhole...");
