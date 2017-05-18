@@ -25,7 +25,7 @@ public class Grid
             pCol=col;
         }
     }
-    
+
     public void up(){
         if(pRow > 0 && grid[pRow-1][pCol] == null){
             grid[pRow][pCol] = null;
@@ -143,6 +143,34 @@ public class Grid
             System.out.println("You obtained: Old Key");
             System.out.println("You examine the Old Key, it appears to fit into a keyhole...");
             System.out.println("");
+        }
+        if(grid[iRow][iCol].indexOf("bridge") != -1){
+            if(grid[iRow][iCol].indexOf("opened") != -1){
+                if(pRow < iRow){
+                    grid[pRow][pCol] = null;
+                    set("player",iRow+1,pCol);
+                }else{
+                    grid[pRow][pCol] = null;
+                    set("player",iRow-1,pCol);
+                }
+            }else{
+                boolean fee = false;
+                for(int loop = 0; loop < inventory.size(); loop++){
+                    if(inventory.get(loop).equals("Silver Coin")){
+                        inventory.remove(loop);
+                        fee = true;
+                    }
+                }
+                if(fee){
+                    grid[iRow][iCol] = "bridgeinteractableopened";
+                    System.out.println("Thank you for your payment, you may pass!");
+                    System.out.println("(Interact with Bridge to pass)");
+                    System.out.println("");
+                }else{
+                    System.out.println("You don't have payment! Go away!");
+                    System.out.println("");
+                }
+            }
         }
     }
     public String[][] getGrid(){
