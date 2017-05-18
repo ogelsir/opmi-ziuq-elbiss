@@ -18,6 +18,7 @@ public class Menu extends JFrame
     public Menu()
     {
         // window
+        
         super("GridQuest");
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -26,7 +27,6 @@ public class Menu extends JFrame
         
         //inventory
         inventory = new ArrayList <String> ();
-        inventory.add("Silver Coin");
         
         //Game initialization
         grid = new Grid(6,7,inventory);
@@ -49,11 +49,6 @@ public class Menu extends JFrame
         
         //chest
         grid.set("chestinteractable",3,0);
-        
-        //river
-        grid.set("river",2,4);
-        grid.set("bridgeinteractable",2,5);
-        grid.set("river",2,6);
         
         //draw grid for first time
         g.drawGrid();
