@@ -64,10 +64,13 @@ public class Menu extends JFrame
         JTextArea textOutput = new JTextArea(15,40);
         textOutput.setEditable(false);
         textOutput.setLineWrap(true);
+        textOutput.setWrapStyleWord(true);
         PrintStream out = new PrintStream(new Console(textOutput));
         System.setOut(out);
         System.setErr(out);
-        System.out.println(help1 + help2);
+        System.out.print(help1 + help2);
+        System.out.println("\n---------------------------------------------------------------------------------------");
+        System.out.println("");
         final JScrollPane scroll = new JScrollPane(textOutput);
         add(scroll);
         
@@ -90,7 +93,8 @@ public class Menu extends JFrame
         
         //final touches
         this.setLocation(950,200);
-        pack();
+        this.setSize(375,300);
+        //pack();
         setVisible(true);
     }
     

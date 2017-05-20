@@ -110,11 +110,15 @@ public class Movement extends JPanel
             if(inventory.size()==0){
                 System.out.println("Inventory Empty!");
                 System.out.println("");
+                System.out.println("---------------------------------------------------------------------------------------");
+                System.out.println("");
             }else{
                 System.out.println("Inventory:");
                 for(int loop = 0; loop < inventory.size(); loop++){
-                    System.out.println(inventory.get(loop));
+                    System.out.println((loop+1) + ". " + inventory.get(loop));
                 }
+                System.out.println("");
+                System.out.println("---------------------------------------------------------------------------------------");
                 System.out.println("");
             }
         }
@@ -127,6 +131,8 @@ public class Movement extends JPanel
             }
             if(grid.specialCase()){
                 grid.interact();
+                System.out.println("---------------------------------------------------------------------------------------");
+                System.out.println("");
             }
         }
     }

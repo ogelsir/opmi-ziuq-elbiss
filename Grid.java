@@ -15,6 +15,7 @@ public class Grid
     private String[][] grid;
     private ArrayList <String> inventory;
     private JTextField input;
+    private boolean firstTimeRiddle = true;
     private int pRow;//player row position
     private int pCol;//player col position
     private int iRow;//interactable row
@@ -139,8 +140,12 @@ public class Grid
                     System.out.println("You obtained: Old Relic");
                     System.out.println("You examine the Old Relic, it appears to fit into something...");
                     System.out.println("");
+                    System.out.println("---------------------------------------------------------------------------------------");
+                    System.out.println("");
                 }else{
                     System.out.println("The Chest is locked! It looks like you need a key...");
+                    System.out.println("");
+                    System.out.println("---------------------------------------------------------------------------------------");
                     System.out.println("");
                 }
             }
@@ -175,8 +180,12 @@ public class Grid
                     System.out.println("Thank you for your payment, you may pass!");
                     System.out.println("(Interact with Bridge to pass)");
                     System.out.println("");
+                    System.out.println("---------------------------------------------------------------------------------------");
+                    System.out.println("");
                 }else{
                     System.out.println("You don't have payment! Go away!");
+                    System.out.println("");
+                    System.out.println("---------------------------------------------------------------------------------------");
                     System.out.println("");
                 }
             }
@@ -186,7 +195,12 @@ public class Grid
                 System.out.println("Gah! I can't think of a riddle to stump you...");
                 System.out.println("");
             }else{
-                System.out.println("See if you can guess my riddle, the reward will be a Silver Coin!");
+                if(firstTimeRiddle){
+                    System.out.println("See if you can guess my riddle, the reward will be a Silver Coin!");
+                    firstTimeRiddle = false;
+                }else{
+                    System.out.println("Back for more? Let's see if you can guess my new riddle...");
+                }
                 System.out.println("");
                 input.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
@@ -242,11 +256,16 @@ public class Grid
         if(guessedRight){
             System.out.println("Correct Answer! As your reward here's a Silver Coin!");
             System.out.println("");
+            System.out.println("---------------------------------------------------------------------------------------");
+                System.out.println("");
             inventory.add("Silver Coin");
             grid[iRow][iCol] = "riddleinteractableanswered";
         }else{
             System.out.println("Wrong Answer! Maybe next time I'll give you an easier riddle...");
             System.out.println("The answer was: " + answers.get(index));
+            System.out.println("");
+            System.out.println("---------------------------------------------------------------------------------------");
+                System.out.println("");
         }        
     }
 }
