@@ -1,4 +1,11 @@
 import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.event.*;
+
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+import java.lang.Math;
 /**
  * @author Felix Yan
  * @version 5/9/17
@@ -7,14 +14,16 @@ public class Grid
 {
     private String[][] grid;
     private ArrayList <String> inventory;
+    private JTextField input;
     private int pRow;//player row position
     private int pCol;//player col position
     private int iRow;//interactable row
     private int iCol;//interactable col
-    public Grid(int row, int col,ArrayList <String> i)
+    public Grid(int row, int col, ArrayList <String> i, JTextField in)
     {
         grid = new String[row][col];
         inventory = i;
+        input = in;
     }
     
     public void set(String x, int row, int col)
@@ -172,8 +181,72 @@ public class Grid
                 }
             }
         }
+        if(grid[iRow][iCol].indexOf("riddle") != -1){
+            if(grid[iRow][iCol].indexOf("answered") != -1){
+                System.out.println("Gah! I can't think of a riddle to stump you...");
+                System.out.println("");
+            }else{
+                System.out.println("See if you can guess my riddle, the reward will be a Silver Coin!");
+                System.out.println("");
+                input.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        String x = e.getActionCommand();
+                        riddleGuess(x);
+                    }
+                });
+                runRiddle(); 
+                input.requestFocusInWindow();
+            }
+        }
     }
     public String[][] getGrid(){
         return grid;
+    }
+    private ArrayList <String> riddles;//the riddles documents has a riddle and then an answer each line 
+    private ArrayList <String> answers;
+    Scanner in;
+    private int index;
+    private String riddle;
+    private boolean guessedRight;
+    public void runRiddle()
+    {
+        try{//checks if the document exists(it should -_-)
+            in = new Scanner(new File("files/riddles.txt"));
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+        riddles = new ArrayList <String> ();
+        answers = new ArrayList <String> ();
+        while(in.hasNext()){
+            riddles.add(in.nextLine());//alternates each line
+            answers.add(in.nextLine());
+        }
+        index = (int)(Math.random()*riddles.size());  
+        System.out.println(riddles.get(index));
+        riddle = riddles.get(index);
+        System.out.println("a(n) ");
+        System.out.println("");
+        
+    }
+    public void riddleGuess(String x){
+        if(x.equals(answers.get(index))){
+            guessedRight = true;
+        }else{
+            guessedRight = false;
+        }
+        result();
+    }
+    public void result(){
+        ActionListener[] temp = input.getActionListeners();
+        input.removeActionListener(temp[0]);
+        if(guessedRight){
+            System.out.println("Correct Answer! As your reward here's a Silver Coin!");
+            System.out.println("");
+            inventory.add("Silver Coin");
+            grid[iRow][iCol] = "riddleinteractableanswered";
+        }else{
+            System.out.println("Wrong Answer! Maybe next time I'll give you an easier riddle...");
+            System.out.println("The answer was: " + answers.get(index));
+        }        
     }
 }

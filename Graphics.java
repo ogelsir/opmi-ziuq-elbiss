@@ -123,6 +123,10 @@ public class Graphics
                         drawInteract();
                     } 
                 } 
+                if(source[r][c].indexOf("riddle") != -1){
+                    pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
+                    drawRiddle();
+                }
                 
                 //trees
                 if(source[r][c].indexOf("tree1") != -1){
@@ -645,36 +649,91 @@ public class Graphics
         pen.fillRect(5,3);
         pen.up();
     }
+    
+    public void drawRiddle(){
+        pen.setDirection(0);
+        pen.forward(25);
+        pen.setDirection(270);
+        pen.forward(15);
+        //
+        pen.down();
+        pen.setColor(Color.black);
+        pen.setDirection(90);
+        pen.forward(11.2);
+        pen.up();
+        pen.forward(12.6);
+        pen.down();
+        pen.drawCircle(12.6);
+        pen.up();
+        pen.setDirection(270);
+        pen.forward(12.6);
+        pen.down();
+        pen.forward(16.8);
+        pen.setDirection(45);
+        pen.forward(16.8);
+        pen.backward(16.8);
+        pen.setDirection(135);
+        pen.forward(16.8);
+        pen.backward(16.8);
+        pen.setDirection(270);
+        pen.forward(12.6);
+        pen.setDirection(225);
+        pen.forward(16.8);
+        pen.backward(16.8);
+        pen.setDirection(315);
+        pen.forward(16.8);
+        pen.up();
+        //hat 204 102 0 brown 153 253 153 green
+        pen.backward(16.8);
+        pen.setDirection(90);
+        pen.forward(53);
+        pen.setColor(new Color(204,102,0));
+        pen.down();
+        pen.fillRect(25,4);
+        pen.setColor(Color.black);
+        pen.drawRect(25,4);
+        pen.up();
+        pen.forward(3);
+        //top triangle
+        pen.down();
+        pen.setColor(new Color(153,253,153));
+        double width = 20;
+        for(;width >= 0; width--){
+            pen.setDirection(180);
+            pen.forward(width/2.0);
+            pen.backward(width);
+            pen.forward(width/2.0);
+            pen.setDirection(90);
+            pen.forward(1);
+        }
+    }
+    
+    
     public void drawRiver(){
         pen.setColor(Color.blue);
         double x = pen.getXPos();
         double y = pen.getYPos();
         pen.down();
-        
         pen.move(x-(50-12.5),y+5);       
         pen.setColor(Color.black);
         pen.drawRect(25,31);
         pen.setColor(new Color(100,255,255));
         pen.fillRect(25,30);
-        
         pen.move(x-12.5,y);
         pen.setColor(Color.black);
         pen.drawRect(25,31);
         pen.setColor(new Color(100,255,255));
         pen.fillRect(25,30);
-        
         pen.move(x+12.5,y-5);
         pen.setColor(Color.black);
         pen.drawRect(25,31);
         pen.setColor(new Color(100,255,255));
         pen.fillRect(25,30);
-        
         pen.move(x+(50-12.5),y);
         pen.setColor(Color.black);
         pen.drawRect(25,31);
         pen.setColor(new Color(100,255,255));
         pen.fillRect(25,30);
-        
         pen.up();
         //1st streak
         pen.setColor(Color.black);
@@ -734,31 +793,26 @@ public class Graphics
         double x = pen.getXPos();
         double y = pen.getYPos();
         pen.down();
-        
         pen.move(x-(50-12.5),y+5);       
         pen.setColor(Color.black);
         pen.drawRect(25,31);
         pen.setColor(new Color(100,255,255));
         pen.fillRect(25,30);
-        
         pen.move(x-12.5,y);
         pen.setColor(Color.black);
         pen.drawRect(25,31);
         pen.setColor(new Color(100,255,255));
         pen.fillRect(25,30);
-        
         pen.move(x+12.5,y-5);
         pen.setColor(Color.black);
         pen.drawRect(25,31);
         pen.setColor(new Color(100,255,255));
         pen.fillRect(25,30);
-        
         pen.move(x+(50-12.5),y);
         pen.setColor(Color.black);
         pen.drawRect(25,31);
         pen.setColor(new Color(100,255,255));
         pen.fillRect(25,30);
-        
         pen.up();
         //1st streak
         pen.setColor(Color.black);
@@ -813,7 +867,7 @@ public class Graphics
         pen.forward(100);
         pen.up();
         //bridge
-        //102 51 0 brown
+        //102 51 0 brown color
         pen.move(x,y);
         pen.setColor(new Color(204,102,0));
         pen.down();
@@ -856,37 +910,31 @@ public class Graphics
         pen.drawRect(6,6);
         //lines
         pen.up();
-        
         pen.move(x-15,y-25);
         pen.setDirection(0);
         pen.down();
         pen.forward(30);
         pen.backward(30);
-        
         pen.move(x-15,y-15);
         pen.setDirection(0);
         pen.down();
         pen.forward(30);
         pen.backward(30);
-        
         pen.move(x-15,y-5);
         pen.setDirection(0);
         pen.down();
         pen.forward(30);
         pen.backward(30);
-        
         pen.move(x-15,y+5);
         pen.setDirection(0);
         pen.down();
         pen.forward(30);
         pen.backward(30);
-        
         pen.move(x-15,y+15);
         pen.setDirection(0);
         pen.down();
         pen.forward(30);
         pen.backward(30);
-        
         pen.move(x-15,y+25);
         pen.setDirection(0);
         pen.down();
@@ -920,12 +968,7 @@ public class Graphics
         pen.forward(6);
         pen.backward(6);
         pen.setDirection(315);
-        pen.forward(6);
-        
-        
-        
-        
-        
+        pen.forward(6);  
         pen.up();
     }
     public void drawPlayer(){

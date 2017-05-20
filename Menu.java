@@ -14,7 +14,7 @@ public class Menu extends JFrame
     private String help1 = "How to play:\n" + "W, A, S, D to move\n" + "E to interact nearby (indicated by red exclamation)\n";
     private String help2 = "Q to print inventory\n" + "ESC to quit game\n";
     private ArrayList <String> inventory;
-
+    final JTextField input = new JTextField("Movement disabled when typing here.");
     public Menu()
     {
         // window
@@ -26,10 +26,9 @@ public class Menu extends JFrame
         
         //inventory
         inventory = new ArrayList <String> ();
-        inventory.add("Silver Coin");
         
         //Game initialization
-        grid = new Grid(6,7,inventory);
+        grid = new Grid(6,7,inventory,input);
         g = new Graphics(grid.getGrid(),grid);
         grid.set("player",5,0);
         //mountains
@@ -50,6 +49,9 @@ public class Menu extends JFrame
         //chest
         grid.set("chestinteractable",3,0);
         
+        //riddle guy
+        grid.set("riddleinteractable",5,6);
+        
         //river
         grid.set("river",2,4);
         grid.set("bridgeinteractable",2,5);
@@ -68,12 +70,12 @@ public class Menu extends JFrame
         System.out.println(help1 + help2);
         final JScrollPane scroll = new JScrollPane(textOutput);
         add(scroll);
+        
         //keyboard input
         final Movement m = new Movement(grid,g,inventory);
         add(m);
         
         //textfield for input
-        final JTextField input = new JTextField("Movement disabled when typing here.");
         input.addFocusListener(new Focus(m));
         input.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
