@@ -172,11 +172,6 @@ public class Graphics
                     pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
                     drawBridge();
                 }
-                //tower of hanoi
-                if(source[r][c].indexOf("temple") != -1){
-                    pen.move((-(100*(col/2)+50))+50+(100*c),((100*((double)row/2))-50)-(100*r));
-                    drawTemple();
-                }
             }
         }
     }
@@ -976,16 +971,6 @@ public class Graphics
         pen.forward(6);  
         pen.up();
     }
-    
-    public void drawTemple(){
-        //placeholder temple
-        pen.down();
-        pen.setColor(Color.gray); 
-        pen.fillRect(20,20);
-
-        pen.up();
-    }
-    
     public void drawPlayer(){
         pen.down();
         pen.setColor(Color.black);
@@ -1030,8 +1015,5 @@ public class Graphics
         pen.down();
         pen.forward(13);
         pen.up();
-    }
-    public void drawHanoi(){
-        //
     }
 }

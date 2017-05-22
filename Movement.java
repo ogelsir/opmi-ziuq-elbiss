@@ -127,6 +127,7 @@ public class Movement extends JPanel
         public void actionPerformed(ActionEvent e){
             if(grid.interactable()){
                 grid.interact();
+                g.drawGrid();
             }
             if(grid.specialCase()){
                 grid.interact();

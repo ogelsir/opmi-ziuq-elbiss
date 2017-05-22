@@ -30,7 +30,6 @@ public class Menu extends JFrame
         //Game initialization
         grid = new Grid(6,7,inventory,input);
         g = new Graphics(grid.getGrid(),grid);
-        grid.setGraphics(g);
         grid.set("player",5,0);
         //mountains
         grid.set("mountain1",1,0);
@@ -57,9 +56,6 @@ public class Menu extends JFrame
         grid.set("river",2,4);
         grid.set("bridgeinteractable",2,5);
         grid.set("river",2,6);
-        
-        //temple + hanoi game
-        grid.set("templeinteractable",0,0);
         
         //draw grid for first time
         g.drawGrid();

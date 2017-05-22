@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.event.*;
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
@@ -14,17 +15,7 @@ public class Grid
     private String[][] grid;
     private ArrayList <String> inventory;
     private JTextField input;
-    private Graphics g;
-    //indexs for moving hanoi disks
-    private int from;
-    private int to;
-    //hanoi
-    private Hanoi h = new Hanoi(4);
-    private boolean gameOver = false;
-    private boolean moveResult;
-    //riddle
     private boolean firstTimeRiddle = true;
-    //position stuff
     private int pRow;//player row position
     private int pCol;//player col position
     private int iRow;//interactable row
@@ -35,9 +26,7 @@ public class Grid
         inventory = i;
         input = in;
     }
-    public void setGraphics(Graphics graphics){
-        g = graphics;
-    }
+    
     public void set(String x, int row, int col)
     {
         grid[row][col] = x;
@@ -132,7 +121,6 @@ public class Grid
         return false;
     }
     public void interact(){
-        boolean hanoi = false;
         if(grid[iRow][iCol].indexOf("chest") != -1){
             if(grid[iRow][iCol].indexOf("opened") != -1){
                 System.out.println("Chest Empty!");
@@ -150,7 +138,7 @@ public class Grid
                     grid[iRow][iCol] = "chestinteractableopened";
                     System.out.println("Chest Unlocked!");
                     System.out.println("You obtained: Old Relic");
-                    System.out.println("You examine the Old Relic, it appears to have odd writing scribbled on it...");
+                    System.out.println("You examine the Old Relic, it appears to fit into something...");
                     System.out.println("");
                     System.out.println("---------------------------------------------------------------------------------------");
                     System.out.println("");
@@ -224,67 +212,6 @@ public class Grid
                 input.requestFocusInWindow();
             }
         }
-        if(grid[iRow][iCol].indexOf("temple") != -1){
-            hanoi = true;
-        }
-        if(hanoi){
-            boolean hasRelic = false;
-            for(int loop = 0; loop < inventory.size(); loop++){
-                if(inventory.get(loop).equals("Old Relic")){
-                    hasRelic = true;
-                }
-            }
-            if(hasRelic){
-                System.out.println("You enter the temple. You see a pedestal in the middle, and on the walls there are ancient writings reminiscent of an ancient civilization.");
-                System.out.println("You notice that the Old Relic you got from the chest earlier has similar writing on it, so you use it to decode the ancient language.");
-                System.out.println("The writings read: TOWER OF HANOI");
-                System.out.println("You approach the pedestal, there lie three pegs with four disks.");
-                System.out.println("");
-                System.out.println("---------------------------------------------------------------------------------------");
-            }else{
-                System.out.println("You enter the temple. You see a pedestal in the middle, and on the walls there are ancient writings reminiscent of an ancient civilization.");
-                System.out.println("Unfortunately, you can't seem to make out what the ancient language reads.");
-                System.out.println("You approach the pedestal, there lie three pegs with four disks.");
-                System.out.println("");
-                System.out.println("---------------------------------------------------------------------------------------");
-            }
-            //creates text input
-            input.addActionListener(new ActionListener(){
-                public void actionPerformed(ActionEvent e){
-                    from = Integer.parseInt(e.getActionCommand().substring(0,1));
-                    to = Integer.parseInt(e.getActionCommand().substring(1));
-                    moveResult = h.move(from,to);
-                    doHanoi();
-                }
-            });
-            System.out.println("Input in format \"1,1\" to perform action");
-            input.requestFocusInWindow();
-            //remember to do requestfocus in the box and stuff
-            hanoiRound();
-        }else{
-            g.drawGrid();
-        }
-    }
-    public void hanoiRound(){
-        g.drawHanoi();
-    }
-    public void doHanoi(){
-        if(!h.isGameOver()){
-            hanoiRound();
-            //print stuff like (you can't seem to move the rock) etc
-        }else{
-            //end game and do stuff
-        }
-        
-        
-        
-        
-        //ending stuff
-        ActionListener[] temp = input.getActionListeners();
-        input.removeActionListener(temp[0]);
-        System.out.println("");
-        System.out.println("---------------------------------------------------------------------------------------");
-        System.out.println("");
     }
     public String[][] getGrid(){
         return grid;
@@ -338,7 +265,7 @@ public class Grid
             System.out.println("The answer was: " + answers.get(index));
             System.out.println("");
             System.out.println("---------------------------------------------------------------------------------------");
-            System.out.println("");
+                System.out.println("");
         }        
     }
 }
