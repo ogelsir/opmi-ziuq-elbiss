@@ -125,6 +125,19 @@ public class Hanoi
     }
     
     /**
+     * getter methods
+     */
+    public ArrayList<Integer> getPeg1(){
+        return peg1;
+    }
+    public ArrayList<Integer> getPeg2(){
+        return peg2;
+    }
+    public ArrayList<Integer> getPeg3(){
+        return peg3;
+    }
+    
+    /**
      * method to print out the contents of the pegs for testing purposes
      */
     public void visualize()
