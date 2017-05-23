@@ -80,6 +80,7 @@ public class Menu extends JFrame
         
         //keyboard input
         final Movement m = new Movement(grid,g,inventory);
+        grid.setMovement(m);
         add(m);
         
         //textfield for input

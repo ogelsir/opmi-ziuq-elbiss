@@ -1,6 +1,7 @@
 import gpdraw.*;
 import java.awt.*;
 import java.lang.Math;
+import java.util.ArrayList;
 /**
  *  
  * @author (your name) 
@@ -12,6 +13,7 @@ public class Graphics
     private SketchPad paper;
     private String[][] source;
     private Grid grid;
+    private Hanoi h;
     private int row;
     private int col;
     //colors
@@ -67,6 +69,9 @@ public class Graphics
         col = s[0].length;
         paper = new SketchPad(200+(100*col),200+(100*row),0);
         pen = new DrawingTool(paper);
+    }
+    public void setHanoi(Hanoi hanoi){
+        h = hanoi;
     }
     public void drawGrid()
     {
@@ -1032,6 +1037,123 @@ public class Graphics
         pen.up();
     }
     public void drawHanoi(){
+        //erases previous grid
+        pen.up();
+        pen.move(0,0);
+        pen.down();
+        pen.setColor(Color.white);
+        pen.fillRect(200+(100*col),200+(100*row));
+        pen.setColor(Color.black);
+        //draws Hanoi
+        pen.up();
+        pen.move(0,-250);
+        pen.setColor(new Color(153,76,0));
+        pen.down();
+        pen.fillRect(810,150);
+        pen.setColor(Color.black);
+        pen.drawRect(810,150);
+        //draws pegs
+        pen.up();
+        pen.setColor(new Color(204,102,0));
+        pen.move(-290,40);
+        pen.down();
+        pen.fillRect(45,430);
+        pen.setColor(Color.black);
+        pen.drawRect(45,430);
+        pen.up();
+        pen.setColor(new Color(204,102,0));
+        pen.move(0,40);
+        pen.down();
+        pen.fillRect(45,430);
+        pen.setColor(Color.black);
+        pen.drawRect(45,430);
+        pen.up();
+        pen.setColor(new Color(204,102,0));
+        pen.move(290,40);
+        pen.down();
+        pen.fillRect(45,430);
+        pen.setColor(Color.black);
+        pen.drawRect(45,430);
+        pen.up();
+        peg1();
+        peg2();
+        peg3();
+    }
+    public void peg1(){
+        pen.up();
+        ArrayList <Integer> temp = h.getPeg1();
+        for(int loop = temp.size()-1; loop >= 0; loop--){//places
+            pen.move(-290,180 - ((4-temp.size())*100) - (100 * loop));
+            drawDisk(temp.get(loop));
+        }
+        pen.up();
+    }
+    public void peg2(){
+        pen.up();
+        ArrayList <Integer> temp = h.getPeg2();
+        for(int loop = temp.size()-1; loop >= 0; loop--){//places
+            pen.move(0,180 - ((4-temp.size())*100) - (100 * loop));
+            drawDisk(temp.get(loop));
+        }
+        pen.up();
+    }
+    public void peg3(){
+        pen.up();
+        ArrayList <Integer> temp = h.getPeg3();
+        for(int loop = temp.size()-1; loop >= 0; loop--){//places
+            pen.move(290,180 - ((4-temp.size())*100) - (100 * loop));
+            drawDisk(temp.get(loop));
+        }
+        pen.up();
+    }
+    public void drawDisk(int x){
+        if(x == 1){
+            disk1();
+        }else{
+            if(x == 2){
+                disk2();
+            }else{
+                if(x == 3){
+                    disk3();
+                }else{
+                    disk4();
+                }
+            }
+        }
+    }
+    public void disk1(){
+        pen.down();
+        pen.setColor(new Color(0,255,128));
+        pen.fillRect(80,75);
+        pen.setColor(Color.black);
+        pen.drawRect(80,75);
+        pen.up();
+    }
+    public void disk2(){
+        pen.down();
+        pen.setColor(new Color(255,128,0));
+        pen.fillRect(120,75);
+        pen.setColor(Color.black);
+        pen.drawRect(120,75);
+        pen.up();
+    }
+    public void disk3(){
+        pen.down();
+        pen.setColor(new Color(0,128,255));
+        pen.fillRect(160,75);
+        pen.setColor(Color.black);
+        pen.drawRect(160,75);
+        pen.up();
+    }
+    public void disk4(){
+        pen.down();
+        pen.setColor(new Color(128,255,0));
+        pen.fillRect(200,75);
+        pen.setColor(Color.black);
+        pen.drawRect(200,75);
+        pen.up();
+    }
+    public void drawEnd(){
         //
     }
 }

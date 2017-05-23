@@ -78,6 +78,9 @@ public class Movement extends JPanel
         q2.put("Q", new qAction());
         e2.put("E", new eAction());
     }
+    public void setEndAction(){
+        e2.put("E", new endEAction());
+    }
     public void updateInventory(ArrayList <String> i){
         inventory = i;
     }
@@ -133,6 +136,11 @@ public class Movement extends JPanel
                 System.out.println("---------------------------------------------------------------------------------------");
                 System.out.println("");
             }
+        }
+    }
+    class endEAction extends AbstractAction{
+        public void actionPerformed(ActionEvent e){
+            g.drawEnd();
         }
     }
     class escAction extends AbstractAction{

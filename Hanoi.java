@@ -12,7 +12,7 @@ public class Hanoi
     private ArrayList<Integer> peg2;
     private ArrayList<Integer> peg3;
     private int numDisks;
-    
+    private String error;
     /**
      * constructs a Hanoi game
      * @param numDisks the number of disks in the game
@@ -72,30 +72,49 @@ public class Hanoi
     {
         ArrayList startPeg;   // peg that gets a disk removed
         ArrayList endPeg;     // peg that gets a disk added
+        if(a == b){//added by Felix
+            error = "same"; return false;
+        }
         if(a == 1)
         {   startPeg = peg1;}
         else if(a == 2)
         {   startPeg = peg2;}
-        else
+        else if(a == 3)
         {   startPeg = peg3;}
+        else
+        { error = "outside"; return false;}
+        
+        
         if(startPeg.size() == 0)
-        {   return false;}
+        {   error = "empty"; return false;}
         
         if(b == 1)
         {   endPeg = peg1;}
         else if(b == 2)
         {   endPeg = peg2;}
-        else
+        else if(b == 3)
         {   endPeg = peg3;}
+        else //added error message if inputted number is too large
+        { error = "outside"; return false;}
         
         Integer startDisk = (Integer)startPeg.get(0);
         if(endPeg.size() != 0)
         {
             Integer endDisk = (Integer)endPeg.get(0);
             if(startDisk > endDisk)
-            {   return false;}
+            { error = "false"; return false;}
         }
         return true;
+    }
+    
+    /**
+     * Added by Felix Yan, added lines in the code that makes text more aesthetic 
+     */
+    public String errorMessage(){
+        return error;
+    }
+    public void resetError(){
+        error = "";
     }
     
     /**

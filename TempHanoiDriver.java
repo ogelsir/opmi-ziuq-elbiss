@@ -5,7 +5,7 @@ public class TempHanoiDriver
     public static void main()
     {
         Scanner in = new Scanner(System.in);
-        Hanoi hGame = new Hanoi(3);
+        Hanoi hGame = new Hanoi(4);
         while(!hGame.isGameOver())
         {
             hGame.visualize();

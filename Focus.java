@@ -12,13 +12,13 @@ public class Focus extends FocusAdapter
         m = movement;
     }
     public void focusGained(FocusEvent e){
-        {
-            ((JTextField)e.getSource()).setText("");
-            m.disable();
+        { 
+                ((JTextField)e.getSource()).setText("");
+                m.disable();
         }
     }
     public void focusLost(FocusEvent e){
-        {
+        {            
             ((JTextField)e.getSource()).setText("Movement disabled when typing here.");
             m.enable();
         }
