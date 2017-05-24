@@ -14,6 +14,8 @@ public class Graphics
     private String[][] source;
     private Grid grid;
     private Hanoi h;
+    
+    private boolean works = true;
     private int row;
     private int col;
     //colors
@@ -73,45 +75,49 @@ public class Graphics
     public void setHanoi(Hanoi hanoi){
         h = hanoi;
     }
+    public void stop(){
+        works = false;
+    }
     public void drawGrid()
     {
-        //erases previous grid
-        pen.up();
-        pen.move(0,0);
-        pen.down();
-        pen.setColor(Color.white);
-        pen.fillRect(200+(100*col),200+(100*row));
-        pen.setColor(Color.black);
-        //draws grid frame
-        pen.up();
-        pen.move(-(100*(col/2)+50),100*((double)row/2));
-        pen.down();
-        pen.setDirection(0);
-        for(int loop = 0; loop <= row; loop++){//rows
-            pen.forward(100*col);
+        if(works){
+            //erases previous grid
             pen.up();
-            pen.backward(100*col);
-            pen.setDirection(270);
-            pen.forward(100);
-            pen.setDirection(0);
+            pen.move(0,0);
             pen.down();
-        }
-        pen.up();
-        pen.move(-(100*(col/2)+50),100*((double)row/2));
-        pen.setDirection(270);
-        pen.down();
-        for(int loop = 0; loop <= col; loop++){//cols
-            pen.forward(100*row);
+            pen.setColor(Color.white);
+            pen.fillRect(200+(100*col),200+(100*row));
+            pen.setColor(Color.black);
+            //draws grid frame
             pen.up();
-            pen.backward(100*row);
+            pen.move(-(100*(col/2)+50),100*((double)row/2));
+            pen.down();
             pen.setDirection(0);
-            pen.forward(100);
+            for(int loop = 0; loop <= row; loop++){//rows
+                pen.forward(100*col);
+                pen.up();
+                pen.backward(100*col);
+                pen.setDirection(270);
+                pen.forward(100);
+                pen.setDirection(0);
+                pen.down();
+            }
+            pen.up();
+            pen.move(-(100*(col/2)+50),100*((double)row/2));
             pen.setDirection(270);
             pen.down();
+            for(int loop = 0; loop <= col; loop++){//cols
+                pen.forward(100*row);
+                pen.up();
+                pen.backward(100*row);
+                pen.setDirection(0);
+                pen.forward(100);
+                pen.setDirection(270);
+                pen.down();
+            }
+            //draw
+            drawObjects();
         }
-        
-        //draw
-        drawObjects();
     }
     public void drawObjects(){//loops through the center of each "box" in the grid, calling on drawing methods
         pen.up();
@@ -1078,6 +1084,51 @@ public class Graphics
         peg1();
         peg2();
         peg3();
+        if(h.isGameOver()){
+            pen.setColor(Color.yellow);
+            pen.move(170,-85);
+            pen.setDirection(175);
+            drawLight();
+            pen.move(180,20);
+            pen.setDirection(165);
+            drawLight();
+            pen.move(200,120);
+            pen.setDirection(150);
+            drawLight();
+            pen.move(225,230);
+            pen.setDirection(140);
+            drawLight();
+            pen.move(270,300);
+            pen.setDirection(130);
+            drawLight();
+            pen.move(330,285);
+            pen.setDirection(60);
+            drawLight();
+            pen.move(380,220);
+            pen.setDirection(45);
+            drawLight();
+            pen.move(400,105);
+            pen.setDirection(30);
+            drawLight();
+            pen.move(420,0);
+            pen.setDirection(15);
+            drawLight();
+            pen.move(430,-100);
+            pen.setDirection(5);
+            drawLight();
+        }
+    }
+    public void drawLight(){
+        pen.down();
+        pen.turnLeft(90);
+        for(int loop = 0; loop < 120; loop++){
+            pen.forward(20);
+            pen.backward(20);
+            pen.turnRight(90);
+            pen.forward(1);
+            pen.turnLeft(90);
+        }
+        pen.up();
     }
     public void peg1(){
         pen.up();
@@ -1153,7 +1204,16 @@ public class Graphics
         pen.drawRect(200,75);
         pen.up();
     }
-    public void drawEnd(){
-        //
+    public void drawEnd1(){
+        grid.removeListener();
+        System.out.println("The temple around you rumbles as a platform with a peculiar rises from the ground... (Type anything to continue)");
+        System.out.println("");
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println("");
+        grid.addEndListener();
+    }
+    public void drawEnd2(){
+        grid.removeListener();
+        System.out.println("Upon the platform lies a gold encrusted potato. What a lame reward...");
     }
 }
