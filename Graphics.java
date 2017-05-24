@@ -989,12 +989,58 @@ public class Graphics
     }
     
     public void drawTemple(){
-        //placeholder temple
+        double x = pen.getXPos();
+        double y = pen.getYPos();
+        //left pillar
+        pen.move(x-30,y-5);
+        pen.setColor(new Color(192,192,192));
         pen.down();
-        pen.setColor(Color.gray); 
-        pen.fillRect(20,20);
-
+        pen.fillRect(15,50);
+        pen.setColor(Color.black);
+        pen.drawRect(15,50);
         pen.up();
+        //right pillar
+        pen.move(x+30,y-5);
+        pen.setColor(new Color(192,192,192));
+        pen.down();
+        pen.fillRect(15,50);
+        pen.setColor(Color.black);
+        pen.drawRect(15,50);
+        pen.up();
+        //center
+        pen.move(x,y);
+        pen.setColor(new Color(192,192,192));
+        pen.down();
+        pen.fillRect(25,70);
+        pen.setColor(Color.black);
+        pen.drawRect(25,70);
+        pen.move(x+1,y);
+        pen.fillRect(11,20);
+        pen.up();
+        //bottom
+        pen.move(x,y-25);
+        pen.down();
+        pen.setColor(new Color(192,192,192));
+        pen.fillRect(80,20);
+        pen.setColor(Color.black);
+        pen.drawRect(80,20);
+        pen.up();
+        
+        
+        pen.up();
+    }
+    public void drawFlag(){
+        pen.setDirection(270);
+        pen.setColor(Color.yellow);
+        double width = 20;
+        for(;width >= 0; width--){
+            pen.setDirection(90);
+            pen.forward(width/2.0);
+            pen.backward(width);
+            pen.forward(width/2.0);
+            pen.setDirection(0);
+            pen.forward(1);
+        }
     }
     
     public void drawPlayer(){
