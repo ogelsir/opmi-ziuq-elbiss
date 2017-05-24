@@ -1206,7 +1206,7 @@ public class Graphics
     }
     public void drawEnd1(){
         grid.removeListener();
-        System.out.println("The temple around you rumbles as a platform with a peculiar rises from the ground... (Type anything to continue)");
+        System.out.println("The temple around you rumbles as a platform with a peculiar object rises from the ground... (Type anything to continue)");
         System.out.println("");
         System.out.println("---------------------------------------------------------------------------------------");
         System.out.println("");
