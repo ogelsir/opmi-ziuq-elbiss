@@ -38,20 +38,25 @@ public class Menu extends JFrame
         grid.set("mountain3",2,1);
         grid.set("mountain2",2,2);
         grid.set("mountain1",3,1);
+        grid.set("mountain3",5,6);
+        grid.set("mountain2",0,6);
+        grid.set("mountain3",0,5);
         //trees around mountains
         grid.set("tree1",1,1);
         grid.set("tree2",1,2);
-        grid.set("tree3",2,3);
+        grid.set("tree3",4,6);//switch
         grid.set("tree2",3,2);
+        grid.set("tree1",0,4);
+        grid.set("tree3",5,3);
+        grid.set("tree2",5,2);
         //trees near bottom + hidden key
-        grid.set("tree1special",5,3);
-        grid.set("tree3",5,4);
+        grid.set("tree1special",2,3);//switch
         
         //chest
         grid.set("chestinteractable",3,0);
         
         //riddle guy
-        grid.set("riddleinteractable",5,6);
+        grid.set("riddleinteractable",5,5);
         
         //river
         grid.set("river",2,4);

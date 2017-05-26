@@ -722,6 +722,7 @@ public class Graphics
             pen.setDirection(90);
             pen.forward(1);
         }
+        pen.up();
     }
     
     
@@ -999,6 +1000,24 @@ public class Graphics
         pen.setColor(Color.black);
         pen.drawRect(15,50);
         pen.up();
+        pen.move(x-29,y-5);
+        pen.down();
+        pen.fillRect(6,10);
+        pen.up();
+        pen.move(x-29,y+8);
+        pen.down();
+        pen.fillRect(6,10);
+        pen.up();
+        //left flag
+        pen.move(x-33,y+20);
+        pen.down();
+        pen.setDirection(90);
+        pen.forward(14);
+        pen.up();
+        pen.move(x-32,y+31);
+        pen.down();
+        drawFlag(5);
+        pen.up();
         //right pillar
         pen.move(x+30,y-5);
         pen.setColor(new Color(192,192,192));
@@ -1006,6 +1025,24 @@ public class Graphics
         pen.fillRect(15,50);
         pen.setColor(Color.black);
         pen.drawRect(15,50);
+        pen.up();
+        pen.move(x+31,y-5);
+        pen.down();
+        pen.fillRect(6,10);
+        pen.up();
+        pen.move(x+31,y+8);
+        pen.down();
+        pen.fillRect(6,10);
+        pen.up();
+        //right flag
+        pen.move(x+26,y+20);
+        pen.down();
+        pen.setDirection(90);
+        pen.forward(14);
+        pen.up();
+        pen.move(x+27,y+31);
+        pen.down();
+        drawFlag(5);
         pen.up();
         //center
         pen.move(x,y);
@@ -1017,6 +1054,22 @@ public class Graphics
         pen.move(x+1,y);
         pen.fillRect(11,20);
         pen.up();
+        //circle
+        pen.move(x+1,y+20);
+        pen.down();
+        pen.setColor(Color.white);
+        pen.fillCircle(5);
+        pen.setColor(Color.black);
+        pen.drawCircle(5);
+        pen.up();
+        //middle flag
+        pen.move(x,y+35);
+        pen.down();
+        pen.setDirection(90);
+        pen.forward(9);
+        pen.move(x+1,y+41);
+        drawFlag(5);
+        pen.up();
         //bottom
         pen.move(x,y-25);
         pen.down();
@@ -1025,15 +1078,12 @@ public class Graphics
         pen.setColor(Color.black);
         pen.drawRect(80,20);
         pen.up();
-        
-        
         pen.up();
     }
-    public void drawFlag(){
+    public void drawFlag(double width){
         pen.setDirection(270);
         pen.setColor(Color.yellow);
-        double width = 20;
-        for(;width >= 0; width--){
+        for(;width >= 0; width = width-0.3){
             pen.setDirection(90);
             pen.forward(width/2.0);
             pen.backward(width);
@@ -1257,9 +1307,60 @@ public class Graphics
         System.out.println("---------------------------------------------------------------------------------------");
         System.out.println("");
         grid.addEndListener();
+        //erases previous grid
+        pen.up();
+        pen.move(0,0);
+        pen.down();
+        pen.setColor(Color.white);
+        pen.fillRect(200+(100*col),200+(100*row));
+        pen.setColor(Color.black);
+        //platform
+        pen.up();
+        pen.move(0,-400);
+        pen.down();
+        pen.setColor(new Color(153,76,0));
+        pen.fillRect(500,300);
+        pen.setColor(Color.black);
+        pen.drawRect(500,300);
     }
     public void drawEnd2(){
         grid.removeListener();
         System.out.println("Upon the platform lies a gold encrusted potato. What a lame reward...");
+        System.out.println("");
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println("");
+        System.out.println("Gridquest made by Oliver Jiang and Felix Yan");
+        System.out.println("Thanks for playing!");
+        //erases previous grid
+        pen.up();
+        pen.move(0,0);
+        pen.down();
+        pen.setColor(Color.white);
+        pen.fillRect(200+(100*col),200+(100*row));
+        pen.setColor(Color.black);
+        //platform
+        pen.setColor(new Color(153,76,0));
+        pen.fillRect(500,100);
+        pen.setColor(Color.black);
+        pen.drawRect(500,100);
+        //stand
+        pen.up();
+        pen.move(0,-300);
+        pen.setColor(new Color(153,76,0));
+        pen.down();
+        pen.fillRect(150,500);
+        pen.setColor(Color.black);
+        pen.drawRect(150,500);
+        //reward
+        pen.up();
+        pen.setColor(Color.yellow);
+        pen.move(-15,100);
+        pen.down();
+        pen.fillCircle(50);
+        pen.move(0,100);
+        pen.fillCircle(50);
+        pen.move(15,100);
+        pen.fillCircle(50);
+        
     }
 }
