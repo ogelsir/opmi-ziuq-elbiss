@@ -161,7 +161,7 @@ public class Grid
                     System.out.println("");
                     g.drawGrid();
                 }else{
-                    System.out.println("The Chest is locked! It looks like you need a key...");
+                    System.out.println("The Chest is locked! It looks like you need a key conveniently buried in the dirt by a tree nearby...");
                     System.out.println("");
                     System.out.println("---------------------------------------------------------------------------------------");
                     System.out.println("");
